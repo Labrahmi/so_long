@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:12:02 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/11 14:53:28 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/11 14:55:14 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		ft_readcoll(char **map2d);
 
 // =================[Check Path]====================
 int	ft_check_path(char **map2d);
+
 
 
 #endif

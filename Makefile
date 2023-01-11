@@ -6,7 +6,7 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/10 19:18:52 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/01/11 14:57:32 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,7 @@ fclean:		clean
 	clear
 
 re:			fclean all
-	gcc so_long.a 
+	gcc -lmlx -framework OpenGL -framework AppKit so_long.a
 	clear
 	./a.out maps/map-3.ber
 

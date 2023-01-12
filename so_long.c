@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:06:29 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/10 11:47:24 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:32:37 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,6 +241,7 @@ int	ft_hook(int keycode, t_args *vars)
 void	so_long(const char *map)
 {
 	t_args	vars;
+	int		map_valid;
 
 	if (!(ft_check_name(map)))
 		exit(1);
@@ -250,14 +251,18 @@ void	so_long(const char *map)
 	vars.w = ft_strlen(vars.map2d[0]) - 1;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, (vars.w * 64), (vars.h * 64), "long");
+	
+	map_valid = ft_check_path(map);
+	if (!(map_valid))
+		exit(1);
 	ft_drawinit(&vars);
 	mlx_key_hook(vars.win, ft_hook, &vars);
 	mlx_loop(vars.mlx);
 }
 
-// int	main(int argc, const char *argv[])
-// {
-// 	if (argc > 1)
-// 		so_long(argv[1]);
-// 	return (0);
-// }
+int	main(int argc, const char *argv[])
+{
+	if (argc > 1)
+		so_long(argv[1]);
+	return (0);
+}

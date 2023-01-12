@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+         #
+#    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/12 06:44:36 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/01/12 11:47:16 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME = so_long.a
 SRCS = 	so_long.c \
 		so_checkmap.c \
 		so_utils.c \
-		so_bfs_map.c \
 		so_bfs.c \
 		libft/ft_atoi.c \
 		libft/ft_bzero.c \
@@ -90,10 +89,10 @@ fclean:		clean
 	clear
 
 re:			fclean all
-# gcc -lmlx -framework OpenGL -framework AppKit so_long.a|
-	gcc so_long.a
+# gcc so_long.a
+	gcc -lmlx -framework OpenGL -framework AppKit so_long.a
 	clear
-	./a.out maps/map-1.ber
+	./a.out maps/map-4.ber
 
 bonus:		$(OBJS_B) $(OBJS)
 	ar rcs $(NAME) $(OBJS_B) $(OBJS)

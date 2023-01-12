@@ -3,14 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   so_bfs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:56:23 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 07:09:04 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:32:12 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+
+void	ft_print_yellow(char i)
+{
+	printf("\033[1;33m%c\033[0m", i);
+}
+void	ft_print_green(char i)
+{
+	printf("\033[1;32m%c\033[0m", i);
+}
+void	ft_print_red(char i)
+{
+	printf("\033[1;31m%c\033[0m", i);
+}
+void	ft_print_cayn(char i)
+{
+	printf("\033[1;36m%c\033[0m", i);
+}
+void	ft_print_purple(char i)
+{
+	printf("\033[1;35m%c\033[0m", i);
+}
+
+typedef struct s_comps
+{
+	int e;
+	int c;
+} t_comps;
+
 
 struct Coords
 {
@@ -105,7 +134,7 @@ void ft_enqueue(struct Queue *q, int i, int j, int *counter, struct Coords *visi
 	{
 		if (ft_is_visited(i, j, visited))
 		{
-			printf("visited: %d, %d\n", i, j);
+			// printf("visited: %d, %d\n", i, j);
 			return;
 		}
 	}
@@ -125,9 +154,10 @@ void ft_enqueue(struct Queue *q, int i, int j, int *counter, struct Coords *visi
 	q->tail = newNode;
 }
 
-void    ft_bfs(char **map2d)
+void    ft_bfs(char **map2d, t_comps *comps)
 {
 	struct Coords visited[10240];
+	struct Node *current_node;
 	struct Queue q;
 	int counter;
 	int i;
@@ -137,40 +167,121 @@ void    ft_bfs(char **map2d)
 	counter = 0;
 	ft_initQueue(&q);
 
-	ft_enqueue(&q, 1, 2, &counter, visited);
-	ft_enqueue(&q, 2, 1, &counter, visited);
-	ft_enqueue(&q, 1, 3, &counter, visited);
-	ft_enqueue(&q, 3, 1, &counter, visited);
+	i = 0;
+	while (map2d[i])
+	{
+		j = 0;
+		while (map2d[i][j])
+		{
+			if (map2d[i][j] == 'P')
+			{
+				ft_enqueue(&q, i, j, &counter, visited);
+			}
+			j++;
+		}
+		i++;
+	}
+	
+	current_node = q.head;
+	
+	int	cc = 0;
+	int	ee = 0;
+	while (!(ft_isQueueEmpty(&q)))
+	{
+		if (map2d[current_node->c.i][current_node->c.j] == 'C')
+			cc++;
+		if (map2d[current_node->c.i][current_node->c.j] == 'E')
+			ee++;
+		// printf("(%d, %d)\n", current_node->c.i, current_node->c.j);
+		// -
+		if (map2d[current_node->c.i][current_node->c.j + 1] != '1')
+			ft_enqueue(&q, current_node->c.i, current_node->c.j + 1, &counter, visited);
+		// -
+		if (map2d[current_node->c.i][current_node->c.j - 1] != '1')
+			ft_enqueue(&q, current_node->c.i, current_node->c.j - 1, &counter, visited);
+		// -
+		if (map2d[current_node->c.i + 1][current_node->c.j] != '1')
+			ft_enqueue(&q, current_node->c.i + 1, current_node->c.j, &counter, visited);
+		// -
+		if (map2d[current_node->c.i - 1][current_node->c.j] != '1')
+			ft_enqueue(&q, current_node->c.i - 1, current_node->c.j, &counter, visited);
+		// -
+		ft_dequeue(&q);
+		current_node = q.head;
+	}
+	comps->c = cc;
+	comps->e = ee;
 
+	{
+		int	i, j;
 
-	ft_visual_queue(&q);
-
-	printf("counter:%d\n", counter);
-
-
-	// i = 0;
-	// while (map2d[i])
-	// {
-	// 	j = 0;
-	// 	while (map2d[i][j])
-	// 	{
-	// 		if (map2d[i][j] == 'P')
-	// 		{
-	// 			ft_enqueue(&q, i, j, &counter, visited);
-	// 		}
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
-	// ft_visual_queue(&q);
+		i = 0;
+		while (map2d[i])
+		{
+			j = 0;
+			while (map2d[i][j])
+			{
+				if (map2d[i][j] == 'C')
+					ft_print_yellow(map2d[i][j]);
+				else if (map2d[i][j] == '0')
+					ft_print_green(map2d[i][j]);
+				else if (map2d[i][j] == 'E')
+					ft_print_red(map2d[i][j]);
+				else if (map2d[i][j] == '1')
+					ft_print_cayn(map2d[i][j]);
+				else
+					ft_print_purple(map2d[i][j]);
+				j++;
+			}
+			i++;
+		}
+	}
+	
 
 }
 
-int main(int argc, char const *argv[])
+void	ft_remove_e(char **map2d)
 {
-	char    **map2d;
+	int	i;
+	int	j;
 
-	map2d = ft_readmap(argv[1]);
-	ft_bfs(map2d);
-	return 0;
+	i = 0;
+	while (map2d[i])
+	{
+		j = 0;
+		while (map2d[i][j])
+		{
+			if (map2d[i][j] == 'E')
+				map2d[i][j] = '1';
+			j++;
+		}
+		i++;
+	}
+}
+
+int	ft_check_path(const char *map)
+{
+	char	**map2d_noe;
+	char	**map2d;
+	t_comps	without_e;
+	t_comps	with_e;
+	int		ret;
+	
+	ret = 0;
+	map2d = ft_readmap(map);
+	map2d_noe = ft_readmap(map);
+
+	ft_remove_e(map2d_noe);
+	ft_bfs(map2d, &with_e);
+	printf("\n---\n");
+	ft_bfs(map2d_noe, &without_e);
+	printf("\n---\n");
+	if (with_e.e == 1 && ((without_e.c == with_e.c)))
+	{
+		printf("Good Map!");
+		ret = 1;
+	}
+	else
+		printf("Baad Map!");
+	return (ret);
 }

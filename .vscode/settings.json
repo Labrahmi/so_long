@@ -1,7 +1,10 @@
 {
     "files.associations": {
         "mlx.h": "c",
-        "so_long.h": "c"
+        "so_long.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c"
     },
     "workbench.colorCustomizations": {
         "minimap.background": "#00000000",

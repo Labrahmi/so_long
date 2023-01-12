@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:56:23 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 06:07:30 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 06:13:20 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 struct Node
 {
-    int data;
+    int i;
+    int j;
     struct Node *next;
 };
 
@@ -35,12 +36,13 @@ void ft_initQueue(struct Queue *q)
     q->tail = NULL;
 }
 
-void ft_enqueue(struct Queue *q, int value)
+void ft_enqueue(struct Queue *q, int i, int j)
 {
     struct Node *newNode;
 
     newNode = (struct Node *)malloc(sizeof(struct Node));
-    newNode->data = value;
+    newNode->i = i;
+    newNode->j = j;
     newNode->next = NULL;
     if (q->tail == NULL)
     {
@@ -51,25 +53,33 @@ void ft_enqueue(struct Queue *q, int value)
     q->tail = newNode;
 }
 
-int ft_dequeue(struct Queue *q)
+void    ft_dequeue(struct Queue *q)
 {
     if (q->head == NULL)
     {
         printf("Error: Queue is Empty\n");
-        return -1;
+        return;
     }
-    int value = q->head->data;
+    int i = q->head->i;
+    int j = q->head->j;
     struct Node *temp = q->head;
     q->head = q->head->next;
     free(temp);
     if (q->head == NULL)
         q->tail = NULL;
-    return value;
 }
 
 void    ft_bfs(char **map2d)
 {
+    struct Queue q;
+    int i;
+    int j;
+
+    ft_initQueue(&q);
     
+        
+    
+
 }
 
 int main(int argc, char const *argv[])

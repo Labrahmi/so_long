@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:12:02 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 12:02:58 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:31:42 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,9 @@ int		ft_check_path(const char *map);
 
 // =================[Check All]====================
 void	ft_check_all(const char *map, t_args *vars);
+
+// ===================[Errors]=====================
+void	my_exit(char *message, int status, t_args *vars);
 
 
 

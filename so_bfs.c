@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:56:23 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 16:13:32 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 19:08:45 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,6 @@ void ft_initQueue(struct Queue *q)
 	q->tail = NULL;
 }
 
-void    ft_visual_queue(struct Queue *q)
-{
-	struct Node *new_node;
-
-	new_node = q->head;
-	while (new_node)
-	{
-		printf("[%d, %d]\n", new_node->c.i, new_node->c.j);
-		new_node = new_node->next;
-	}
-}
-
 void    ft_initVisited(struct Coords *visited)
 {
 	int i;
@@ -92,7 +80,6 @@ void    ft_dequeue(struct Queue *q)
 {
 	if (q->head == NULL)
 	{
-		printf("Error: Queue is Empty\n");
 		return;
 	}
 	int i = q->head->c.i;
@@ -235,21 +222,15 @@ int	ft_check_path(const char *map)
 	t_comps	without_e;
 	t_comps	with_e;
 	int		ret;
-	
+
 	ret = 0;
 	map2d = ft_readmap(map);
 	map2d_noe = ft_readmap(map);
-
 	ft_remove_e(map2d_noe);
 	ft_bfs(map2d, &with_e);
 	ft_bfs(map2d_noe, &without_e);
 	if (with_e.e == 1 && ((without_e.c == with_e.c)))
 		ret = 1;
-		
-	// printf("with E:(%d)\n", with_e.c);
-	// printf("wout E:(%d)\n", without_e.c);
-	// printf("cout E:(%d)\n", ft_count_c(map2d));
-	// exit(0);
 	if (ft_count_c(map2d) != with_e.c)
 		ret = 0;
 	return (ret);

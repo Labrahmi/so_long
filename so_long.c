@@ -6,37 +6,11 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:06:29 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 11:32:37 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:57:08 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-#define _W 13
-#define _A 0
-#define _S 1
-#define _D 2
-#define ESC 53
-
-typedef struct s_imag
-{
-	void	*back;
-	void	*wall;
-	void	*coll;
-	void	*play;
-	void	*exit;
-}	t_imag;
-
-typedef struct s_args
-{
-	char	**map2d;
-	void	*mlx;
-	void	*win;
-	int		coll;
-	t_imag	img;
-	int		h;
-	int		w;
-}	t_args;
 
 void	*ft_gimg(char curr, t_args *vars)
 {
@@ -241,7 +215,6 @@ int	ft_hook(int keycode, t_args *vars)
 void	so_long(const char *map)
 {
 	t_args	vars;
-	int		map_valid;
 
 	if (!(ft_check_name(map)))
 		exit(1);
@@ -251,10 +224,7 @@ void	so_long(const char *map)
 	vars.w = ft_strlen(vars.map2d[0]) - 1;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, (vars.w * 64), (vars.h * 64), "long");
-	
-	map_valid = ft_check_path(map);
-	if (!(map_valid))
-		exit(1);
+	ft_check_all(map, &vars);
 	ft_drawinit(&vars);
 	mlx_key_hook(vars.win, ft_hook, &vars);
 	mlx_loop(vars.mlx);

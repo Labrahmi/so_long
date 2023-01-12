@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:56:23 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 11:32:12 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:04:20 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,6 @@ void    ft_bfs(char **map2d, t_comps *comps)
 			cc++;
 		if (map2d[current_node->c.i][current_node->c.j] == 'E')
 			ee++;
-		// printf("(%d, %d)\n", current_node->c.i, current_node->c.j);
 		// -
 		if (map2d[current_node->c.i][current_node->c.j + 1] != '1')
 			ft_enqueue(&q, current_node->c.i, current_node->c.j + 1, &counter, visited);
@@ -212,32 +211,30 @@ void    ft_bfs(char **map2d, t_comps *comps)
 	comps->c = cc;
 	comps->e = ee;
 
-	{
-		int	i, j;
+	// {
+	// 	int	i, j;
 
-		i = 0;
-		while (map2d[i])
-		{
-			j = 0;
-			while (map2d[i][j])
-			{
-				if (map2d[i][j] == 'C')
-					ft_print_yellow(map2d[i][j]);
-				else if (map2d[i][j] == '0')
-					ft_print_green(map2d[i][j]);
-				else if (map2d[i][j] == 'E')
-					ft_print_red(map2d[i][j]);
-				else if (map2d[i][j] == '1')
-					ft_print_cayn(map2d[i][j]);
-				else
-					ft_print_purple(map2d[i][j]);
-				j++;
-			}
-			i++;
-		}
-	}
-	
-
+	// 	i = 0;
+	// 	while (map2d[i])
+	// 	{
+	// 		j = 0;
+	// 		while (map2d[i][j])
+	// 		{
+	// 			if (map2d[i][j] == 'C')
+	// 				ft_print_yellow(map2d[i][j]);
+	// 			else if (map2d[i][j] == '0')
+	// 				ft_print_green(map2d[i][j]);
+	// 			else if (map2d[i][j] == 'E')
+	// 				ft_print_red(map2d[i][j]);
+	// 			else if (map2d[i][j] == '1')
+	// 				ft_print_cayn(map2d[i][j]);
+	// 			else
+	// 				ft_print_purple(map2d[i][j]);
+	// 			j++;
+	// 		}
+	// 		i++;
+	// 	}
+	// }
 }
 
 void	ft_remove_e(char **map2d)
@@ -273,15 +270,8 @@ int	ft_check_path(const char *map)
 
 	ft_remove_e(map2d_noe);
 	ft_bfs(map2d, &with_e);
-	printf("\n---\n");
 	ft_bfs(map2d_noe, &without_e);
-	printf("\n---\n");
 	if (with_e.e == 1 && ((without_e.c == with_e.c)))
-	{
-		printf("Good Map!");
 		ret = 1;
-	}
-	else
-		printf("Baad Map!");
 	return (ret);
 }

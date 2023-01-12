@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:06:29 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 11:57:08 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:46:18 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ void	so_long(const char *map)
 	vars.win = mlx_new_window(vars.mlx, (vars.w * 64), (vars.h * 64), "long");
 	ft_check_all(map, &vars);
 	ft_drawinit(&vars);
-	mlx_key_hook(vars.win, ft_hook, &vars);
+	mlx_hook(vars.win, 2, 1L<<0, ft_hook, &vars);
 	mlx_loop(vars.mlx);
 }
 

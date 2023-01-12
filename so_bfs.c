@@ -6,33 +6,11 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:56:23 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 12:04:20 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:13:32 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
-void	ft_print_yellow(char i)
-{
-	printf("\033[1;33m%c\033[0m", i);
-}
-void	ft_print_green(char i)
-{
-	printf("\033[1;32m%c\033[0m", i);
-}
-void	ft_print_red(char i)
-{
-	printf("\033[1;31m%c\033[0m", i);
-}
-void	ft_print_cayn(char i)
-{
-	printf("\033[1;36m%c\033[0m", i);
-}
-void	ft_print_purple(char i)
-{
-	printf("\033[1;35m%c\033[0m", i);
-}
 
 typedef struct s_comps
 {
@@ -133,10 +111,7 @@ void ft_enqueue(struct Queue *q, int i, int j, int *counter, struct Coords *visi
 	if ((*counter) != 0)
 	{
 		if (ft_is_visited(i, j, visited))
-		{
-			// printf("visited: %d, %d\n", i, j);
 			return;
-		}
 	}
 	newNode = (struct Node *)malloc(sizeof(struct Node));
 	newNode->c.i = i;
@@ -210,31 +185,6 @@ void    ft_bfs(char **map2d, t_comps *comps)
 	}
 	comps->c = cc;
 	comps->e = ee;
-
-	// {
-	// 	int	i, j;
-
-	// 	i = 0;
-	// 	while (map2d[i])
-	// 	{
-	// 		j = 0;
-	// 		while (map2d[i][j])
-	// 		{
-	// 			if (map2d[i][j] == 'C')
-	// 				ft_print_yellow(map2d[i][j]);
-	// 			else if (map2d[i][j] == '0')
-	// 				ft_print_green(map2d[i][j]);
-	// 			else if (map2d[i][j] == 'E')
-	// 				ft_print_red(map2d[i][j]);
-	// 			else if (map2d[i][j] == '1')
-	// 				ft_print_cayn(map2d[i][j]);
-	// 			else
-	// 				ft_print_purple(map2d[i][j]);
-	// 			j++;
-	// 		}
-	// 		i++;
-	// 	}
-	// }
 }
 
 void	ft_remove_e(char **map2d)
@@ -256,6 +206,28 @@ void	ft_remove_e(char **map2d)
 	}
 }
 
+int	ft_count_c(char **map2d)
+{
+	int i;
+	int j;
+	int	c;
+
+	c = 0;
+	i = 0;
+	while (map2d[i])
+	{
+		j = 0;
+		while (map2d[i][j])
+		{
+			if (map2d[i][j] == 'C')
+				c++;
+			j++;
+		}
+		i++;
+	}
+	return c;
+}
+
 int	ft_check_path(const char *map)
 {
 	char	**map2d_noe;
@@ -273,5 +245,12 @@ int	ft_check_path(const char *map)
 	ft_bfs(map2d_noe, &without_e);
 	if (with_e.e == 1 && ((without_e.c == with_e.c)))
 		ret = 1;
+		
+	// printf("with E:(%d)\n", with_e.c);
+	// printf("wout E:(%d)\n", without_e.c);
+	// printf("cout E:(%d)\n", ft_count_c(map2d));
+	// exit(0);
+	if (ft_count_c(map2d) != with_e.c)
+		ret = 0;
 	return (ret);
 }

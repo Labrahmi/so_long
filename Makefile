@@ -6,7 +6,7 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/12 12:03:41 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/01/12 16:37:04 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ re:			fclean all
 # gcc so_long.a
 	gcc -lmlx -framework OpenGL -framework AppKit so_long.a
 	clear
-	./a.out maps/map-4.ber
+	./a.out maps/map-1.ber
 
 bonus:		$(OBJS_B) $(OBJS)
 	ar rcs $(NAME) $(OBJS_B) $(OBJS)

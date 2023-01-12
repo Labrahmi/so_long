@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:16:28 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/01 09:29:49 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:34:43 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	**ft_readmap(const char *map)
 	close(fd);
 	return (map2d);
 }
+
 
 int ft_readcoll(char **map2d)
 {

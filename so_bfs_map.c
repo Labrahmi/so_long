@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_bfs_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 15:36:36 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/10 19:20:31 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/12 06:04:09 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,14 +205,8 @@ int	ft_check_path(char **map2d)
 	return (0);
 }
 
-int main(int argc, char const *argv[])
-{
-	ft_check_path(ft_readmap(argv[1]));
-	return 0;
-}
-
-/*
-	1111
-	1P01
-	1111
-*/
+// int main(int argc, char const *argv[])
+// {
+// 	ft_check_path(ft_readmap(argv[1]));
+// 	return 0;
+// }

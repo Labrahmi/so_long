@@ -6,13 +6,13 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:16:28 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 18:52:41 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:46:40 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_check_name(const char *map) 
+int	ft_check_name(const char *map)
 {
 	char	*stand;
 	int		stand_len;
@@ -39,7 +39,7 @@ int	ft_countlines(const char *map)
 	{
 		line = get_next_line(fd);
 		if (!(line))
-			break;
+			break ;
 		i++;
 	}
 	close(fd);
@@ -66,7 +66,7 @@ char	**ft_readmap(const char *map)
 	{
 		line = get_next_line(fd);
 		if (!(line))
-			break;
+			break ;
 		map2d[i] = line;
 		i++;
 	}
@@ -74,8 +74,7 @@ char	**ft_readmap(const char *map)
 	return (map2d);
 }
 
-
-int ft_readcoll(char **map2d)
+int	ft_readcoll(char **map2d)
 {
 	int	i;
 	int	j;

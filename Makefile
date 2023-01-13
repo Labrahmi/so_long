@@ -6,7 +6,7 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/13 17:59:29 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/01/13 19:09:07 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ NAME = so_long.a
 SRCS = 	so_long.c \
 		so_checkmap.c \
 		so_utils.c \
+		so_utils_2.c \
 		so_bfs.c \
+		so_bfs_utils.c \
+		so_bfs_utils_2.c \
 		so_checkmap_2.c \
 		so_checkmap_3.c \
 		libft/ft_atoi.c \

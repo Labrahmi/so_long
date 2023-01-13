@@ -6,50 +6,11 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:06:29 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 18:13:41 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:50:20 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-
-
-int	ft_drawinit(t_args *vars)
-{
-	int		x;
-	int		y;
-	int		i;
-	int		j;
-	char	curr;
-
-	i = 0;
-	y = 0;
-	while (vars->map2d[i])
-	{
-		j = 0;
-		x = 0;
-		while (vars->map2d[i][j])
-		{
-			curr = vars->map2d[i][j];
-			ft_piw(vars, curr, x, y);
-			j++;
-			x += 64;
-		}
-		i++;
-		y += 64;
-	}
-	return (1);
-}
-
-int	ft_isvalidcode(int keycode)
-{
-	if (keycode == _A || keycode == _D
-		|| keycode == _W || keycode == _S)
-	{
-		return (1);
-	}
-	return (0);
-}
 
 void	ft_map_update(t_args *vars, int move, int i, int j)
 {
@@ -75,8 +36,6 @@ void	ft_map_update(t_args *vars, int move, int i, int j)
 	}
 }
 
-
-
 void	ft_set_indexes_12(t_indexes *idxs, int move, int i, int j)
 {
 	if (move == _D)
@@ -100,7 +59,6 @@ void	ft_set_indexes_12(t_indexes *idxs, int move, int i, int j)
 		idxs->ix2 = ((i - 1) * 64);
 	}
 }
-
 
 int	ft_hook(int keycode, t_args *vars)
 {

@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:12:02 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 18:13:52 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:18:01 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,35 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-#define _W 13
-#define _A 0
-#define _S 1
-#define _D 2
-#define ESC 53
+# define _W 13
+# define _A 0
+# define _S 1
+# define _D 2
+# define ESC 53
+
+typedef struct s_comps
+{
+	int	e;
+	int	c;
+}	t_comps;
+
+typedef struct s_coords
+{
+	int	i;
+	int	j;
+}	t_coords;
+
+typedef struct s_node
+{
+	struct s_node	*next;
+	t_coords		c;
+}	t_node;
+
+typedef struct s_queue
+{
+	t_node	*head;
+	t_node	*tail;
+}	t_queue;
 
 typedef struct wls_v
 {
@@ -69,38 +93,75 @@ typedef struct s_indexes
 	int	ix2;
 }	t_indexes;
 
-// =================[Check Map]=====================
-int	ft_check_name(const char *map);
+// int		ft_check_name(const char *map);
+// char	**ft_readmap(const char *map);
+// int		ft_countlines(const char *map);
+// int		ft_readcoll(char **map2d);
+// int		ft_check_path(const char *map);
+// void	ft_check_all(const char *map, t_args *vars);
+// void	my_exit(char *message, int status, t_args *vars);
+// void	ft_check_ones(char *fu1, char *fu2, t_args *vars);
+// void	my_exit(char *message, int status, t_args *vars);
+// void	ft_check_walls(t_args *vars, const char *map);
+// void	ft_check_strange(t_args *vars);
+// void	ft_check_minim(t_args *vars);
+// void	ft_check_rect(t_args *vars, const char *map);
+// void	ft_check_all(const char *map, t_args *vars);
+// void	ft_put_img_to_win(t_args *vars, int i, int j, int move);
+// char	ft_get_c_postition(t_args *vars, int move, int i, int j);
+// void	ft_piw(t_args *vars, int curr, int x, int y);
+// void	ft_destroy_exit(t_args *vars, int status);
+// void	*ft_gimg(char curr, t_args *vars);
 
-// =================[Read Map]======================
-char	**ft_readmap(const char *map);
-int		ft_countlines(const char *map);
-int		ft_readcoll(char **map2d);
 
-// =================[Check Path]====================
+
+
+
+
+// void	ft_map_update(t_args *vars, int move, int i, int j);
+// void	ft_set_indexes_12(t_indexes *idxs, int move, int i, int j);
+// int		ft_hook(int keycode, t_args *vars);
+// void	so_long(const char *map);
+void	ft_dequeue(t_queue *q);
+void	ft_enqueue(t_queue *q, int i, int j, int *counter, t_coords *visited);
+void	ft_init_comps(t_comps *comps);
+void	ft_helper(t_queue *q, char **map2d, t_coords *visited, t_comps *comps);
+void	ft_bfs(char **map2d, t_comps *comps);
+void	ft_remove_e(char **map2d);
+int		ft_count_c(char **map2d);
+int		ft_is_queue_empty(t_queue *q);
+void	ft_init_queue(t_queue *q);
+void	ft_init_visited(t_coords *visited);
+int		ft_is_visited(int i, int j, t_coords *visited);
 int		ft_check_path(const char *map);
-
-// =================[Check All]====================
-void	ft_check_all(const char *map, t_args *vars);
-
-// ===================[Errors]=====================
 void	my_exit(char *message, int status, t_args *vars);
-
-
-void	ft_check_ones(char *fu1, char *fu2, t_args *vars);
-void	my_exit(char *message, int status, t_args *vars);
-void	ft_check_walls(t_args *vars, const char *map);
-void	ft_check_strange(t_args *vars);
+void	ft_insit_comps(t_cmpts *comps);
 void	ft_check_minim(t_args *vars);
 void	ft_check_rect(t_args *vars, const char *map);
 void	ft_check_all(const char *map, t_args *vars);
-
-// -
+void	ft_check_ones(char *fu1, char *fu2, t_args *vars);
+void	ft_check_walls(t_args *vars, const char *map);
+void	ft_check_strange(t_args *vars);
+int		ft_check_name(const char *map);
+int		ft_countlines(const char *map);
+char	**ft_readmap(const char *map);
+int		ft_readcoll(char **map2d);
+void	ft_set_indexes_12(t_indexes *idxs, int move, int i, int j);
+void	ft_map_update(t_args *vars, int move, int i, int j);
+int		ft_hook(int keycode, t_args *vars);
+void	so_long(const char *map);
+int		ft_isvalidcode(int keycode);
+int		ft_drawinit(t_args *vars);
 void	ft_put_img_to_win(t_args *vars, int i, int j, int move);
 char	ft_get_c_postition(t_args *vars, int move, int i, int j);
-void	ft_piw(t_args *vars, int curr, int x, int y);
 void	ft_destroy_exit(t_args *vars, int status);
 void	*ft_gimg(char curr, t_args *vars);
+void	ft_piw(t_args *vars, int curr, int x, int y);
+
+
+
+
+
 
 
 

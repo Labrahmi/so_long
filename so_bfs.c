@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:56:23 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 19:08:45 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:14:28 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ typedef struct s_comps
 	int e;
 	int c;
 } t_comps;
-
 
 struct Coords
 {
@@ -154,19 +153,14 @@ void    ft_bfs(char **map2d, t_comps *comps)
 			cc++;
 		if (map2d[current_node->c.i][current_node->c.j] == 'E')
 			ee++;
-		// -
 		if (map2d[current_node->c.i][current_node->c.j + 1] != '1')
 			ft_enqueue(&q, current_node->c.i, current_node->c.j + 1, &counter, visited);
-		// -
 		if (map2d[current_node->c.i][current_node->c.j - 1] != '1')
 			ft_enqueue(&q, current_node->c.i, current_node->c.j - 1, &counter, visited);
-		// -
 		if (map2d[current_node->c.i + 1][current_node->c.j] != '1')
 			ft_enqueue(&q, current_node->c.i + 1, current_node->c.j, &counter, visited);
-		// -
 		if (map2d[current_node->c.i - 1][current_node->c.j] != '1')
 			ft_enqueue(&q, current_node->c.i - 1, current_node->c.j, &counter, visited);
-		// -
 		ft_dequeue(&q);
 		current_node = q.head;
 	}

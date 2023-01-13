@@ -6,20 +6,11 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:51:34 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/12 22:31:00 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 17:59:44 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-typedef struct s_cmpts
-{
-	int	z;
-	int	n;
-	int	c;
-	int	e;
-	int	p;
-}	t_cmpts;
 
 void	my_exit(char *message, int status, t_args *vars)
 {
@@ -94,65 +85,11 @@ void	ft_check_rect(t_args *vars, const char *map)
 		my_exit("The map format is not valid.", 1, vars);
 }
 
-void	ft_check_walls(t_args *vars, const char *map)
-{
-	int	lines;
-	int	ret;
-	int	i;
-	int	j;	
-	
-	i = 0;
-	while (vars->map2d[0][i] != '\n')
-		if (vars->map2d[0][i++] != '1')
-			my_exit("The map is not valid.", 1, vars);
-	lines = (ft_countlines(map) - 1);
-	while (vars->map2d[lines][i] != '\0')
-		if (vars->map2d[lines][i++] != '1')
-			my_exit("The map is not valid.", 1, vars);
-	i = 0;
-	while (i < lines + 1)
-		if (vars->map2d[i++][0] != '1')
-			my_exit("The map is not valid.", 1, vars);
-	i = 0;
-	ret = 0;
-	while (i < lines + 1)
-	{
-		j = ft_strlen(vars->map2d[i]);
-		ret += 1 * ((i < lines) && (vars->map2d[i][j - 2] != '1'));
-		ret += 1 * ((i == lines) && (vars->map2d[i][j - 1] != '1'));
-		i++;
-	}
-	if (ret != 0)
-		my_exit("The map is not valid.", 1, vars);
-}
-
-void	ft_check_strange(t_args *vars)
-{
-	char	c;
-	int		i;
-	int		j;
-	
-	i = 0;
-	while (vars->map2d[i])
-	{
-		j = 0;
-		while (vars->map2d[i][j])
-		{
-			c = vars->map2d[i][j];
-			if (!(c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C' || c == '\n'))
-				my_exit("Strange character is present.", 1, vars);
-			j++;
-		}
-		i++;	
-	}
-	
-}
-
 void	ft_check_all(const char *map, t_args *vars)
 {
+	ft_check_walls(vars, map);
 	ft_check_rect(vars, map);
 	ft_check_minim(vars);
-	ft_check_walls(vars, map);
 	ft_check_strange(vars);
 	if (!(ft_check_path(map)))
 		my_exit("There is no possible path in the map.", 1, vars);

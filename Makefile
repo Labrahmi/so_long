@@ -6,7 +6,7 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/12 18:34:53 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/01/13 17:59:29 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = 	so_long.c \
 		so_utils.c \
 		so_bfs.c \
 		so_checkmap_2.c \
+		so_checkmap_3.c \
 		libft/ft_atoi.c \
 		libft/ft_bzero.c \
 		libft/ft_calloc.c \

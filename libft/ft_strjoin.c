@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:16:38 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/12/07 09:44:36 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:06:16 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char	*ft_strjoin(char *backup, char *buffer)
 	while (buffer[j])
 		temp[i++] = buffer[j++];
 	temp[i] = '\0';
-	free(backup);
+	// free(backup);
 	return (temp);
 }

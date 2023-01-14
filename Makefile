@@ -6,7 +6,7 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/14 23:03:27 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/01/14 23:07:47 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,6 @@ SRC_B =	libft/ft_lstadd_back_bonus.c \
 
 OBJS = $(SRCS:.c=.o)
 
-OBJS_B = $(SRC_B:.c=.o)
-
 CC = cc
 
 RM = rm -f
@@ -86,12 +84,9 @@ $(NAME):	$(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS) $(OBJS_B)
+	$(RM) $(OBJS)
 
 fclean:		clean
 	$(RM) $(NAME)
 
 re:			fclean all
-
-bonus:		$(OBJS_B) $(OBJS)
-	ar rcs $(NAME) $(OBJS_B) $(OBJS)

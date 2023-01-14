@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:51:34 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/14 13:06:44 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/14 22:58:29 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ void	ft_check_rect(t_args *vars, const char *map)
 	i++;
 	while (i < (lines - 1))
 	{
-		if (curr != ft_strlen(vars->map2d[i]))
+		if (curr != (int) ft_strlen(vars->map2d[i]))
 			ret++;
 		curr = ft_strlen(vars->map2d[i++]);
 	}
-	ret += 1 * ((ft_strlen(vars->map2d[i]) + 1) != curr);
+	ret += 1 * ((int)(ft_strlen(vars->map2d[i]) + 1) != curr);
 	if (ret != 0)
 		my_exit("The map format is not valid.", 1, vars);
 }

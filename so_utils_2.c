@@ -6,11 +6,25 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:49:41 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 18:49:51 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/14 12:55:37 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_set_imgs(t_imag *x, t_args *vars)
+{
+	x->back = ft_gimg('0', vars);
+	x->play = ft_gimg('P', vars);
+}
+
+int	ft_quite(t_args *vars)
+{
+	ft_printf("You Quite The Game.");
+	free(vars->map2d);
+	exit(0);
+	return (0);
+}
 
 int	ft_drawinit(t_args *vars)
 {
@@ -31,10 +45,10 @@ int	ft_drawinit(t_args *vars)
 			curr = vars->map2d[i][j];
 			ft_piw(vars, curr, x, y);
 			j++;
-			x += 64;
+			x += 32;
 		}
 		i++;
-		y += 64;
+		y += 32;
 	}
 	return (1);
 }

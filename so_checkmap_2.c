@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:51:34 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 17:59:44 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:06:44 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	my_exit(char *message, int status, t_args *vars)
 {
-	printf("\033[1;28mError:\033[0m\n\033[1;31m%s\033[0m\n", message);
+	ft_printf("\033[1;28mError:\033[0m\n\033[1;31m%s\033[0m\n", message);
 	if (vars)
 		free(vars->map2d);
 	exit(status);

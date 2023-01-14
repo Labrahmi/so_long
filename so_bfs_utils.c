@@ -6,125 +6,83 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:42:36 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 19:15:04 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 21:59:27 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_init_comps(t_comps *comps)
-{
-	comps->c = 0;
-	comps->e = 0;
-}
-
-void    ft_bfs(char **map2d, t_comps *comps)
+typedef struct bfsuv
 {
 	t_coords	visited[10240];
-	t_node		*current_node;
-	int			counter;
-	t_queue		q;
+	t_node		*cun;
 	int			i;
 	int			j;
+}	t_bfsuv;
 
-	// ft_initVisited(visited);
+int	ft_helper_new(t_coords *visited, int *ctr, char **map2d, t_queue *q)
+{
+	t_coords	cor;
+
 	ft_init_visited(visited);
-	counter = 0;
-	// ft_initQueue(&q);
-	ft_init_queue(&q);
-
-	i = 0;
-	while (map2d[i])
+	ft_init_queue(q);
+	cor.i = 0;
+	while (map2d[cor.i])
 	{
-		j = 0;
-		while (map2d[i][j])
+		cor.j = 0;
+		while (map2d[cor.i][cor.j])
 		{
-			if (map2d[i][j] == 'P')
-			{
-				ft_enqueue(&q, i, j, &counter, visited);
-			}
-			j++;
+			if (map2d[cor.i][cor.j] == 'P')
+				ft_enqueue(q, cor, ctr, visited);
+			cor.j++;
 		}
-		i++;
+		cor.i++;
 	}
-	
-	current_node = q.head;
-	
-	int	cc = 0;
-	int	ee = 0;
-	while (!(ft_is_queue_empty(&q)))
-	{
-		if (map2d[current_node->c.i][current_node->c.j] == 'C')
-			cc++;
-		if (map2d[current_node->c.i][current_node->c.j] == 'E')
-			ee++;
-		if (map2d[current_node->c.i][current_node->c.j + 1] != '1')
-			ft_enqueue(&q, current_node->c.i, current_node->c.j + 1, &counter, visited);
-		if (map2d[current_node->c.i][current_node->c.j - 1] != '1')
-			ft_enqueue(&q, current_node->c.i, current_node->c.j - 1, &counter, visited);
-		if (map2d[current_node->c.i + 1][current_node->c.j] != '1')
-			ft_enqueue(&q, current_node->c.i + 1, current_node->c.j, &counter, visited);
-		if (map2d[current_node->c.i - 1][current_node->c.j] != '1')
-			ft_enqueue(&q, current_node->c.i - 1, current_node->c.j, &counter, visited);
-		ft_dequeue(&q);
-		current_node = q.head;
-	}
-	comps->c = cc;
-	comps->e = ee;
+	return (0);
 }
 
-/*
-void	ft_helper(t_queue *q, char **map2d, t_coords *visited, t_comps *comps)
+void	ft_check_now(char curr, t_comps *comps)
 {
-	t_node	*current_node;
+	if (curr == 'C')
+		comps->c += 1;
+	if (curr == 'E')
+		comps->e += 1;
+}
 
-	ft_init_comps(comps);
-	current_node = q->head;
-	while (!(ft_is_queue_empty(q)))
-	{
-		if (map2d[current_node->c.i][current_node->c.j] == 'C')
-			comps->c += 1;
-		if (map2d[current_node->c.i][current_node->c.j] == 'E')
-			comps->e += 1;
-		if (map2d[current_node->c.i][current_node->c.j + 1] != '1')
-			ft_enqueue(q, current_node->c.i, current_node->c.j + 1, visited);
-		if (map2d[current_node->c.i][current_node->c.j - 1] != '1')
-			ft_enqueue(q, current_node->c.i, current_node->c.j - 1, visited);
-		if (map2d[current_node->c.i + 1][current_node->c.j] != '1')
-			ft_enqueue(q, current_node->c.i + 1, current_node->c.j, visited);
-		if (map2d[current_node->c.i - 1][current_node->c.j] != '1')
-			ft_enqueue(q, current_node->c.i - 1, current_node->c.j, visited);
-		ft_dequeue(q);
-		current_node = q->head;
-	}
+void	ft_set_cors(t_coords *cor, int curr_i, int curr_j)
+{
+	cor->i = curr_i;
+	cor->j = curr_j;
 }
 
 void	ft_bfs(char **map2d, t_comps *comps)
 {
-	t_coords	visited[10240];
-	int			counter;
+	t_coords	cor;
+	t_bfsuv		new;
 	t_queue		q;
-	int			i;
-	int			j;
+	int			ctr;
 
-	ft_init_visited(visited);
-	ft_init_queue(&q);
-	counter = 0;
-	i = -1;
-	while (map2d[i])
+	ctr = ft_helper_new(new.visited, &ctr, map2d, &q);
+	new.cun = q.head;
+	while (!(ft_is_queue_empty(&q)))
 	{
-		j = 0;
-		while (map2d[i][j])
-		{
-			if (map2d[i][j] == 'P')
-				ft_enqueue(&q, i, j, visited);
-			j++;
-		}
-		i++;
+		ft_check_now(map2d[new.cun->c.i][new.cun->c.j], comps);
+		ft_set_cors(&cor, new.cun->c.i, new.cun->c.j + 1);
+		if (map2d[new.cun->c.i][new.cun->c.j + 1] != '1')
+			ft_enqueue(&q, cor, &ctr, new.visited);
+		ft_set_cors(&cor, new.cun->c.i, new.cun->c.j - 1);
+		if (map2d[new.cun->c.i][new.cun->c.j - 1] != '1')
+			ft_enqueue(&q, cor, &ctr, new.visited);
+		ft_set_cors(&cor, new.cun->c.i + 1, new.cun->c.j);
+		if (map2d[new.cun->c.i + 1][new.cun->c.j] != '1')
+			ft_enqueue(&q, cor, &ctr, new.visited);
+		ft_set_cors(&cor, new.cun->c.i - 1, new.cun->c.j);
+		if (map2d[new.cun->c.i - 1][new.cun->c.j] != '1')
+			ft_enqueue(&q, cor, &ctr, new.visited);
+		ft_dequeue(&q);
+		new.cun = q.head;
 	}
-	ft_helper(&q, map2d, visited, comps);
 }
-*/
 
 void	ft_remove_e(char **map2d)
 {
@@ -143,26 +101,4 @@ void	ft_remove_e(char **map2d)
 		}
 		i++;
 	}
-}
-
-int	ft_count_c(char **map2d)
-{
-	int	i;
-	int	j;
-	int	c;
-
-	c = 0;
-	i = 0;
-	while (map2d[i])
-	{
-		j = 0;
-		while (map2d[i][j])
-		{
-			if (map2d[i][j] == 'C')
-				c++;
-			j++;
-		}
-		i++;
-	}
-	return (c);
 }

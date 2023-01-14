@@ -6,11 +6,17 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:43:39 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 19:18:26 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 22:02:24 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_init_comps(t_comps *comps)
+{
+	comps->c = 0;
+	comps->e = 0;
+}
 
 void	ft_dequeue(t_queue *q)
 {
@@ -29,27 +35,50 @@ void	ft_dequeue(t_queue *q)
 		q->tail = NULL;
 }
 
-void ft_enqueue(t_queue *q, int i, int j, int *counter, t_coords *visited)
+void	ft_enqueue(t_queue *q, t_coords cor, int *counter, t_coords *visited)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	if ((*counter) != 0)
 	{
-		if (ft_is_visited(i, j, visited))
-			return;
+		if (ft_is_visited(cor.i, cor.j, visited))
+			return ;
 	}
 	new_node = (t_node *)malloc(sizeof(t_node));
-	new_node->c.i = i;
-	new_node->c.j = j;
+	new_node->c.i = cor.i;
+	new_node->c.j = cor.j;
 	new_node->next = NULL;
-	visited[(*counter)].i = i;
-	visited[(*counter)].j = j;
+	visited[(*counter)].i = cor.i;
+	visited[(*counter)].j = cor.j;
 	(*counter)++;
 	if (q->tail == NULL)
 	{
-		q->head = q->tail = new_node;
-		return;
+		q->head = new_node;
+		q->tail = new_node;
+		return ;
 	}
 	q->tail->next = new_node;
 	q->tail = new_node;
+}
+
+int	ft_count_c(char **map2d)
+{
+	int	i;
+	int	j;
+	int	c;
+
+	c = 0;
+	i = 0;
+	while (map2d[i])
+	{
+		j = 0;
+		while (map2d[i][j])
+		{
+			if (map2d[i][j] == 'C')
+				c++;
+			j++;
+		}
+		i++;
+	}
+	return (c);
 }

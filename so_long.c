@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:06:29 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 18:50:20 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/14 12:55:33 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,23 @@ void	ft_set_indexes_12(t_indexes *idxs, int move, int i, int j)
 {
 	if (move == _D)
 	{
-		idxs->ix1 = ((j + 1) * 64);
-		idxs->ix2 = (i * 64);
+		idxs->ix1 = ((j + 1) * 32);
+		idxs->ix2 = (i * 32);
 	}
 	if (move == _A)
 	{
-		idxs->ix1 = ((j - 1) * 64);
-		idxs->ix2 = (i * 64);
+		idxs->ix1 = ((j - 1) * 32);
+		idxs->ix2 = (i * 32);
 	}
 	if (move == _S)
 	{
-		idxs->ix1 = (j * 64);
-		idxs->ix2 = ((i + 1) * 64);
+		idxs->ix1 = (j * 32);
+		idxs->ix2 = ((i + 1) * 32);
 	}
 	if (move == _W)
 	{
-		idxs->ix1 = (j * 64);
-		idxs->ix2 = ((i - 1) * 64);
+		idxs->ix1 = (j * 32);
+		idxs->ix2 = ((i - 1) * 32);
 	}
 }
 
@@ -99,10 +99,11 @@ void	so_long(const char *map)
 	vars.h = ft_countlines(map);
 	vars.w = ft_strlen(vars.map2d[0]) - 1;
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, (vars.w * 64), (vars.h * 64), "long");
+	vars.win = mlx_new_window(vars.mlx, (vars.w * 32), (vars.h * 32), "long");
 	ft_check_all(map, &vars);
 	ft_drawinit(&vars);
-	mlx_hook(vars.win, 2, 1L << 0, ft_hook, &vars);
+	mlx_hook(vars.win, 2, 0, ft_hook, &vars);
+	mlx_hook(vars.win, 17, 0, ft_quite, &vars);
 	mlx_loop(vars.mlx);
 }
 

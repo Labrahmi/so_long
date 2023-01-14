@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 05:56:23 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 18:44:14 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/13 20:22:43 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ int	ft_check_path(const char *map)
 	t_comps	with_e;
 	int		ret;
 
+	with_e.c = 0;
+	with_e.e = 0;
+	without_e.c = 0;
+	without_e.e = 0;
 	ret = 0;
 	map2d = ft_readmap(map);
 	map2d_noe = ft_readmap(map);

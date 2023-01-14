@@ -6,7 +6,7 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/14 22:57:38 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/01/14 23:03:27 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ CC = cc
 
 RM = rm -f
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 
 all:		$(NAME)
 
@@ -90,14 +90,8 @@ clean:
 
 fclean:		clean
 	$(RM) $(NAME)
-	$(RM) *.out
-	clear
 
 re:			fclean all
-# gcc so_long.a
-	gcc -lmlx -framework OpenGL -framework AppKit so_long.a
-	clear
-	./a.out maps/map-1.ber
 
 bonus:		$(OBJS_B) $(OBJS)
 	ar rcs $(NAME) $(OBJS_B) $(OBJS)

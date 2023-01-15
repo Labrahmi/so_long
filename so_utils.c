@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:17:42 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/14 13:47:43 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/15 20:02:48 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_put_img_to_win(t_args *vars, int i, int j, int move)
 	if ((c_postition == 'E') && (vars->coll == 0))
 	{
 		ft_printf("Moves:%d\n", ++mv);
-		mlx_put_image_to_window(vars->mlx, vars->win, x.back, j * 32, i * 32);
+		mlx_put_image_to_window(vars->mlx, vars->win, x.back, j * 72, i * 72);
 		ft_destroy_exit(vars, 0);
 	}
 	if (!(c_postition == '1' || c_postition == 'E'))
@@ -33,7 +33,7 @@ void	ft_put_img_to_win(t_args *vars, int i, int j, int move)
 		if ((c_postition) == 'C')
 			mlx_put_image_to_window(vars->mlx, vars->win, x.back, z.ix1, z.ix2);
 		vars->coll -= 1 * ((c_postition) == 'C');
-		mlx_put_image_to_window(vars->mlx, vars->win, x.back, j * 32, i * 32);
+		mlx_put_image_to_window(vars->mlx, vars->win, x.back, j * 72, i * 72);
 		mlx_put_image_to_window(vars->mlx, vars->win, x.play, z.ix1, z.ix2);
 		ft_map_update(vars, move, i, j);
 		ft_printf("Moves:%d\n", ++mv);
@@ -68,17 +68,17 @@ void	*ft_gimg(char curr, t_args *vars)
 
 	h = 0;
 	w = 0;
-	img_ptr = mlx_new_image(vars->mlx, 32, 32);
+	img_ptr = mlx_new_image(vars->mlx, 72, 72);
 	if (curr == '0')
-		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/back-32.xpm", &h, &w);
+		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/back.xpm", &h, &w);
 	if (curr == 'C')
-		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/coll-32.xpm", &h, &w);
+		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/coll.xpm", &h, &w);
 	if (curr == 'E')
-		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/exit-32.xpm", &h, &w);
+		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/exit.xpm", &h, &w);
 	if (curr == 'P')
-		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/play-32.xpm", &h, &w);
+		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/play.xpm", &h, &w);
 	if (curr == '1')
-		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/wall-32.xpm", &h, &w);
+		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/wall.xpm", &h, &w);
 	return (img_ptr);
 }
 

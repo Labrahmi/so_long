@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_uint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 17:12:43 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/09/30 11:57:20 by ylabrahm         ###   ########.fr       */
+/*   Created: 2022/10/23 17:38:43 by ylabrahm          #+#    #+#             */
+/*   Updated: 2023/01/18 20:16:52 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_print_uint(unsigned int ui, int *count)
 {
-	size_t	i;
+	char	c;
 
-	i = 0;
-	while (s[i] != '\0')
+	if (ui < 10)
 	{
-		i++;
+		c = (ui % 10) + '0';
+		write(1, &c, 1);
+		(*count) += 1;
 	}
-	return (i);
+	else
+	{
+		ft_print_int_((ui / 10), (count));
+		ft_print_int_((ui % 10), (count));
+	}
 }

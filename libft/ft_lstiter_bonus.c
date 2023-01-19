@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str_.c                                    :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 18:37:37 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/12/07 09:59:38 by ylabrahm         ###   ########.fr       */
+/*   Created: 2023/01/16 15:22:40 by ylabrahm          #+#    #+#             */
+/*   Updated: 2023/01/16 15:24:14 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
-int	ft_print_str_(char *cp)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int	count;
-	int	i;
+	t_list	*node;
 
-	count = 0;
-	i = 0;
-	if (!cp)
-		cp = "(null)";
-	while (cp[i])
+	if (lst)
 	{
-		count += ft_print_char(cp[i]);
-		i++;
+		node = lst;
+		while (node)
+		{
+			f(node->content);
+			node = node->next;
+		}
 	}
-	return (count);
 }

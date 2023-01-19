@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_uint.c                                    :+:      :+:    :+:   */
+/*   ft_print_str_.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 17:38:43 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/12/07 09:59:40 by ylabrahm         ###   ########.fr       */
+/*   Created: 2022/10/23 18:37:37 by ylabrahm          #+#    #+#             */
+/*   Updated: 2023/01/18 20:16:48 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
-void	ft_print_uint(unsigned int ui, int *count)
+int	ft_print_str_(char *cp)
 {
-	char	c;
+	int	count;
+	int	i;
 
-	if (ui < 10)
+	count = 0;
+	i = 0;
+	if (!cp)
+		cp = "(null)";
+	while (cp[i])
 	{
-		c = (ui % 10) + '0';
-		write(1, &c, 1);
-		(*count) += 1;
+		count += ft_print_char(cp[i]);
+		i++;
 	}
-	else
-	{
-		ft_print_int_((ui / 10), (count));
-		ft_print_int_((ui % 10), (count));
-	}
+	return (count);
 }

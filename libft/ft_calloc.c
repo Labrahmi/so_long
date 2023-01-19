@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:01:18 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/10/21 10:23:52 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:18:34 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#ifndef SIZE_MAX
-# define SIZE_MAX 10240
-#endif
 
 void	*ft_calloc(size_t count, size_t size)
 {

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 19:12:51 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/10/21 12:01:27 by ylabrahm         ###   ########.fr       */
+/*   Created: 2023/01/16 00:22:45 by ylabrahm          #+#    #+#             */
+/*   Updated: 2023/01/16 15:19:09 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char	*ret_pointer;
-	size_t	len;
-	int		i;
+	t_list	*current_node;
+	t_list	*next_node;
 
-	i = 0;
-	len = ft_strlen(s1);
-	ret_pointer = (char *) ft_calloc((len + 1), sizeof(char));
-	if (!ret_pointer)
-		return (NULL);
-	while (s1[i] != '\0')
+	current_node = *lst;
+	while (current_node)
 	{
-		ret_pointer[i] = s1[i];
-		i++;
+		next_node = current_node->next;
+		del(current_node->content);
+		free(current_node);
+		current_node = next_node;
 	}
-	return (ret_pointer);
+	*lst = NULL;
 }

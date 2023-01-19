@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_int_.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ylabrahm <ylabrahm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 17:38:46 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/12/07 09:59:35 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:16:46 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../libft.h"
 
 void	ft_print_int_(int i, int *ip)
 {

@@ -6,13 +6,21 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/01/20 00:00:09 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/02/02 22:27:24 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRCS = *.c
+SRCS =	so_bfs_utils_2.c \
+		so_checkmap_2.c \
+		so_checkmap_3.c \
+		so_bfs_utils.c \
+		so_checkmap.c \
+		so_utils_2.c \
+		so_utils.c \
+		so_long.c \
+		so_bfs.c
 
 LIBFT_FILE = libft/libft.a
 
@@ -22,11 +30,15 @@ CC = cc
 
 RM = rm -f
 
+CFLAGS = -Wall -Werror -Wextra
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@make -C libft/
-	$(CC) $(OBJS) -o $(NAME)
+	$(CC) $(OBJS) libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+# gcc -lmlx -framework OpenGL -framework AppKit so_long.a
 
 clean:
 	$(RM) $(NAME)

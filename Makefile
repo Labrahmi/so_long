@@ -6,7 +6,7 @@
 #    By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 21:30:11 by ylabrahm          #+#    #+#              #
-#    Updated: 2023/02/02 22:27:24 by ylabrahm         ###   ########.fr        #
+#    Updated: 2023/02/02 22:54:45 by ylabrahm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@make -C libft/
 	$(CC) $(OBJS) libft/libft.a -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
-# gcc -lmlx -framework OpenGL -framework AppKit so_long.a
 
 clean:
 	$(RM) $(NAME)

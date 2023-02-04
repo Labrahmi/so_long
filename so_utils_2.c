@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:49:41 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/02 23:36:50 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/03 22:07:55 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	ft_drawinit(t_args *vars)
 			curr = vars->map2d[i][j];
 			ft_piw(vars, curr, x, y);
 			j++;
-			x += 32;
+			x += 50;
 		}
 		i++;
-		y += 32;
+		y += 50;
 	}
 	return (1);
 }

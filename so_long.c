@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:06:29 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/03 22:07:49 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:33:59 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ int	ft_hook(int keycode, t_args *vars)
 void	so_long(const char *map)
 {
 	t_args	vars;
-
-	if (!(ft_check_name(map)))
-		exit(1);
+	
 	vars.map2d = ft_readmap(map);
 	vars.coll = ft_readcoll(vars.map2d);
 	vars.h = ft_countlines(map);
@@ -109,7 +107,9 @@ void	so_long(const char *map)
 
 int	main(int argc, const char *argv[])
 {
-	if (argc > 1)
+	if (argc == 2)
 		so_long(argv[1]);
+	else
+		my_exit("Please provide one map as argument.", 1, NULL);
 	return (0);
 }

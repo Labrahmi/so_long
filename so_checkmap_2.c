@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 11:51:34 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/14 22:58:29 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:25:56 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,6 @@ void	ft_check_all(const char *map, t_args *vars)
 	ft_check_strange(vars);
 	if (!(ft_check_path(map)))
 		my_exit("There is no possible path in the map.", 1, vars);
+	if (!(ft_check_name(map)))
+		my_exit("The map extension is not valid.", 1, vars);
 }

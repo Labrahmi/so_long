@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:12:02 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/04 18:24:43 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:23:26 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ typedef struct s_indexes
 	int	ix2;
 }	t_indexes;
 
+int		ft_check_name(const char *map);
+void	ft_free_maps(char **map2d);
 void	ft_dequeue(t_queue *q);
 void	ft_enqueue(t_queue *q, t_coords cor, int *counter, t_coords *visited);
 void	ft_init_comps(t_comps *comps);
@@ -114,7 +116,6 @@ void	ft_check_all(const char *map, t_args *vars);
 void	ft_check_ones(char *fu1, char *fu2, t_args *vars);
 void	ft_check_walls(t_args *vars, const char *map);
 void	ft_check_strange(t_args *vars);
-int		ft_check_name(const char *map);
 int		ft_countlines(const char *map);
 char	**ft_readmap(const char *map);
 int		ft_readcoll(char **map2d);

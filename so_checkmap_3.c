@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:57:28 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 17:59:50 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:19:25 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,24 @@ void	ft_check_ones(char *fu1, char *fu2, t_args *vars)
 	while (fu1[i] && fu1[i] != '\n')
 	{
 		if (fu1[i] != '1')
+		{
+			free(fu1);
 			my_exit("The map walls are not valid.", 1, vars);
+		}
 		i++;
 	}
 	i = 0;
 	while (fu2[i])
 	{
 		if (fu2[i] != '1')
+		{
+			free(fu2);
 			my_exit("The map walls are not valid.", 1, vars);
+		}
 		i++;
 	}
-	i = 0;
+	free(fu1);
+	free(fu2);
 }
 
 void	ft_check_walls(t_args *vars, const char *map)

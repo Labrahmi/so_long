@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:12:43 by ylabrahm          #+#    #+#             */
-/*   Updated: 2022/09/30 11:57:20 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:29:04 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (s)
 	{
-		i++;
+		while (s[i] != '\0')
+			i++;
 	}
 	return (i);
 }

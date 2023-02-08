@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:43:39 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/01/13 22:02:24 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:56:34 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,20 @@ int	ft_count_c(char **map2d)
 		i++;
 	}
 	return (c);
+}
+
+void	ft_free_maps(char **map2d)
+{
+	int	i;
+
+	i = 0;
+	if (map2d)
+	{
+		while (map2d[i])
+		{
+			free(map2d[i]);
+			i++;
+		}
+		free(map2d);
+	}
 }

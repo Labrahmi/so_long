@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:06:29 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/08 15:33:59 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:41:03 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_hook(int keycode, t_args *vars)
 void	so_long(const char *map)
 {
 	t_args	vars;
-	
+
 	vars.map2d = ft_readmap(map);
 	vars.coll = ft_readcoll(vars.map2d);
 	vars.h = ft_countlines(map);

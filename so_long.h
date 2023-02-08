@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:12:02 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/08 15:23:26 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:25:17 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include <mlx.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include "libft/libft.h"
 # include "libft/get_next_line/get_next_line.h"

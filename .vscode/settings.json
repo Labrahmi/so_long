@@ -5,6 +5,10 @@
 	},
 	"files.associations": {
 		"*.xpm": "c",
-		"so_long.h": "c"
+		"so_long.h": "c",
+		"stdio.h": "c",
+		"stdlib.h": "c",
+		"get_next_line.h": "c",
+		"libft.h": "c"
 	}
 }

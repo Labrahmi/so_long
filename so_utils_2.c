@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:49:41 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/03 22:07:55 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/11 14:26:50 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,20 @@ void	ft_set_imgs(t_imag *x, t_args *vars)
 
 int	ft_quite(t_args *vars)
 {
+	int	i;
+
+	i = 0;
 	ft_printf("You Quite The Game.");
-	free(vars->map2d);
+	if (vars->map2d)
+	{
+		while (vars->map2d[i])
+		{
+			if (vars->map2d[i])
+				free(vars->map2d[i]);
+			i++;
+		}
+		free(vars->map2d);
+	}
 	exit(0);
 	return (0);
 }

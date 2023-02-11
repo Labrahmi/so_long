@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 12:17:42 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/03 22:07:52 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:18:31 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,20 @@ char	ft_get_c_postition(t_args *vars, int move, int i, int j)
 
 void	ft_destroy_exit(t_args *vars, int status)
 {
-	free(vars->map2d);
+	int	i;
+
+	i = 0;
 	mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->map2d)
+	{
+		while (vars->map2d[i])
+		{
+			if (vars->map2d[i])
+				free(vars->map2d[i]);
+			i++;
+		}
+		free(vars->map2d);
+	}
 	exit(status);
 }
 
@@ -79,6 +91,8 @@ void	*ft_gimg(char curr, t_args *vars)
 		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/play.xpm", &h, &w);
 	if (curr == '1')
 		img_ptr = mlx_xpm_file_to_image(vars->mlx, "as/wall.xpm", &h, &w);
+	if (!(img_ptr))
+		my_exit("Assets are damaged or inaccessible (XPM Files)", 1, NULL);
 	return (img_ptr);
 }
 

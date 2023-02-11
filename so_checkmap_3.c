@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:57:28 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/07 15:19:25 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/11 14:46:27 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_check_walls(t_args *vars, const char *map)
 	v.count = ft_countlines(map);
 	v.full_1 = ft_strjoin(vars->map2d[v.count - 1], vars->map2d[0]);
 	v.full_2 = ft_calloc((v.count * 2) + 1, sizeof(char));
+	if (!(v.full_2))
+		my_exit("Insufficient memory", 1, NULL);
 	v.i = 0;
 	v.j = 0;
 	while (v.i < v.count)

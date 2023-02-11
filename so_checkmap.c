@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 10:16:28 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/08 15:29:47 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/11 14:47:20 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ char	**ft_readmap(const char *map)
 	if (!(lines))
 		my_exit("The map file is invalid.", 1, NULL);
 	map2d = (char **) ft_calloc(lines + 1, sizeof(char *));
+	if (!(map2d))
+		my_exit("Insufficient memory", 1, NULL);
 	while (1)
 	{
 		map2d[i] = get_next_line(fd);

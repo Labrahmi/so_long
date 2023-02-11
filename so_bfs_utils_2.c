@@ -6,7 +6,7 @@
 /*   By: ylabrahm <ylabrahm@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:43:39 by ylabrahm          #+#    #+#             */
-/*   Updated: 2023/02/08 14:56:34 by ylabrahm         ###   ########.fr       */
+/*   Updated: 2023/02/11 14:44:24 by ylabrahm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	ft_enqueue(t_queue *q, t_coords cor, int *counter, t_coords *visited)
 			return ;
 	}
 	new_node = (t_node *)malloc(sizeof(t_node));
+	if (!(new_node))
+		my_exit("Insufficient memory", 1, NULL);
 	new_node->c.i = cor.i;
 	new_node->c.j = cor.j;
 	new_node->next = NULL;
